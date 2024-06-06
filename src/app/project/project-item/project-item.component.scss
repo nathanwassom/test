@@ -1,0 +1,26 @@
+.project-item {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.status {
+  &.approuve {
+    color: green;
+  }
+  &.validation {
+    color: yellow;
+  }
+  &.refuse {
+    color: red;
+  }
+  &.inactif {
+    color: gray;
+  }
+  &.creation {
+    color: blue;
+  }
+}

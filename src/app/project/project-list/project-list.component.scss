@@ -1,0 +1,37 @@
+.project-list {
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  text-align: left;
+}
+
+mat-header-cell {
+  font-weight: bold;
+}
+
+.status {
+  &.approuve {
+    color: green;
+  }
+  &.validation {
+    color: yellow;
+  }
+  &.refuse {
+    color: red;
+  }
+  &.inactif {
+    color: gray;
+  }
+  &.creation {
+    color: blue;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="project-list">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Rechercher un projet" [(ngModel)]="searchQuery">
+    <button mat-icon-button matSuffix><mat-icon>search</mat-icon></button>
+  </mat-form-field>
+
+  <mat-table [dataSource]="projects">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+      <mat-cell *matCellDef="let project"> {{ project.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="projectNumber">
+      <mat-header-cell *matHeaderCellDef> N° Projet </mat-header-cell>
+      <mat-cell *matCellDef="let project"> {{ project.projectNumber }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Statut </mat-header-cell>
+      <mat-cell *matCellDef="let project">
+        <span [ngClass]="getStatusClass(project.status)">{{ project.status }}</span>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'projectNumber', 'status']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'projectNumber', 'status']"></mat-row>
+  </mat-table>
+
+
+  <!-- <mat-paginator [length]="projects.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator> -->
+</div>
