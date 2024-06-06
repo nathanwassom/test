@@ -12,21 +12,18 @@ export class ProjectListComponent implements OnInit {
   projects!: MatTableDataSource<Project>;
   searchQuery: string | undefined;
 
-  // projets: Array<Project[]> = [];
-  projets: (Project | undefined)[]= [];
+
+  projets: (Project)[] = [];
 
 
 
   constructor(private _projectService: ProjectService) { }
 
   ngOnInit(): void {
-    // this._projectService.getProjects().subscribe(
-    //   projects => {
-    //   // this.projects = new MatTableDataSource(projects);
-    //   console.log(projects);
-    // });
+    
     this._projectService.getProjects().subscribe({
       next: (p) => {
+        console.log(p);
         this.projets = p;
 
       },

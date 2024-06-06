@@ -14,15 +14,8 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<Project[]> {
-    return  this.http.get<Project[]>(this.url + 'data.json').pipe(
-      tap((u) => console.log(u))
-        );
+    return  this.http.get<Project[]>(this.url + 'data.json');
 
   }
 
-  // searchProjects(query: string): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.apiUrl}?q=${query}`).pipe(
-  //     tap(projects => console.log('Search results:', projects))
-  //   );
-  // }
 }
