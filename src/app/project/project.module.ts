@@ -12,8 +12,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 
-
-
 @NgModule({
   declarations: [ProjectListComponent, ProjectItemComponent],
   imports: [

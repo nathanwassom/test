@@ -10,15 +10,31 @@ mat-form-field mat-label {
   margin-right: 10px;
 }
 
-mat-icon {
-  color: #2E865F;
-  margin-right: 10px;
-}
-.example-button-container{
-  background-color: #2E865F;
+.search-button-container{
   color: #FFFFFF;
   border-radius: 10px;
   margin-left: 10px;
+  margin-top: 5px;
+
+  button{
+    height:56px;
+    width:56px;
+    background-color: #2E865F;
+    border:none;
+    border-radius:10px
+  }
+
+  mat-icon {
+    color: white;
+  }
+
+}
+
+form {
+  border-radius: 10px;
+  background-color: #F2F2F2;
+  padding: 10px; display: flex;
+  align-items: start;
 }
 
 input {
@@ -74,21 +90,33 @@ mat-icon {
 table {
   width: 100%;
   border-collapse: collapse;
+
+  th, td {
+    padding: 0px 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    border-left:none;
+    border-right:none;
+  }
+
+  tr{
+    &:nth-child(1) th{
+      border-bottom-color: green;
+    }
+  }
+
+  th {
+    &:nth-child(1){
+      width: 70%;
+    }
+  }
+
+  td {
+    border-top: none;
+  }
+
 }
 
-th, td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-th {
-  background-color: #f0f0f0;
-}
-
-td {
-  border-top: none;
-}
 
 .mat-sort-header {
   cursor: pointer;
@@ -155,4 +183,8 @@ td {
   padding: 5px 10px;
   border-radius: 10px;
   font-weight: bold;
+}
+
+mat-form-field{
+  margin-bottom:0;
 }

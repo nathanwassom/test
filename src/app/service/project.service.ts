@@ -9,13 +9,12 @@ import { Project } from '../models/project';
 })
 export class ProjectService {
 
- url = '/assets/data/'
+  jsonSource : string = '/assets/data/data.json'
 
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<Project[]> {
-    return  this.http.get<Project[]>(this.url + 'data.json');
-
+    return  this.http.get<Project[]>(this.jsonSource);
   }
 
 }

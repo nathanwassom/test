@@ -10,7 +10,6 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit {
-  // projects!: MatTableDataSource<Project>;
   searchQuery: string | undefined;
   displayedColumns: string[] = ['nom', 'numeroProjet', 'statut'];
 
@@ -18,24 +17,18 @@ export class ProjectListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-
-
   }
 
   constructor(private _projectService: ProjectService) { }
 
   ngOnInit(): void {
-
     this._projectService.getProjects().subscribe({
       next: (projects) => {
         this.dataSource = new MatTableDataSource(projects);
         this.dataSource.paginator = this.paginator;
-        console.log(projects);
-
       },
     });
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -47,8 +40,5 @@ export class ProjectListComponent implements OnInit {
 
   getDisplayedColumns(): string[] {
     return this.displayedColumns;
-  }
-  getStatusClass(status:void){
-    return '';
   }
 }
