@@ -1,59 +1,68 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProjectListComponent } from './project-list.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AngularMaterialModule } from '../../angular-material/angular-material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { By } from '@angular/platform-browser';
 import { ProjectService } from '../../service/project.service';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { from, of } from 'rxjs';
-
+import { of } from 'rxjs';
 
 describe('ProjectListComponent', () => {
   let component: ProjectListComponent;
   let fixture: ComponentFixture<ProjectListComponent>;
-  let mockProjectService;
-  let valueServiceSpy: jasmine.SpyObj<ProjectService>;
+  let projectService: ProjectService;
+
+  const mockProjects = [
+    { id: 1, name: 'GESTION A', projectNumber: '1234', status: 'Approuvé' },
+    { id: 2, name: 'GESTION A', projectNumber: '1234', status: 'Validation' },
+    { id: 3, name: 'GESTION A', projectNumber: '1234', status: 'Refusé' },
+    { id: 4, name: 'GESTION A', projectNumber: '1234', status: 'Inactif' },
+    { id: 5, name: 'GESTION A', projectNumber: '1234', status: 'Création' }
+  ];
 
   beforeEach(async () => {
-    const spy = jasmine.createSpyObj('ProjectService', ['getProjects']);
     await TestBed.configureTestingModule({
-      imports:[HttpClientModule,AngularMaterialModule,BrowserAnimationsModule],
-      declarations: [ProjectListComponent],
-      providers: [{
-        provide: ProjectService,
-        useValue: spy
-     }]
+      declarations: [ ProjectListComponent ],
+      providers: [ ProjectService ]
     })
-    .compileComponents();
+      .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(ProjectListComponent);
     component = fixture.componentInstance;
+    projectService = TestBed.inject(ProjectService);
     fixture.detectChanges();
-
-    // mockProjectService = TestBed.inject(ProjectService);
-
-    // mockProjectService.getProjects.and.returnValue(from([]));
-
-    mockProjectService = TestBed.inject(ProjectService);
-    valueServiceSpy = TestBed.inject(ProjectService) as jasmine.SpyObj<ProjectService>;
   });
 
   it('should create', () => {
-    // expect(component).toBeTruthy();
-
-    valueServiceSpy.getProjects.and.returnValue(from([]));
+    expect(component).toBeTruthy();
   });
 
-  // it('should filter data when searching', () => {
-  //   const searchInput = fixture.debugElement.query(By.css('input[matInput]'));
-  //   searchInput.nativeElement.value = 'Gestion A';
-  //   searchInput.nativeElement.dispatchEvent(new Event('input'));
+  it('should initialize projects on ngOnInit', () => {
+    spyOn(projectService, 'getProjects').and.returnValue(of(mockProjects));
 
-  //   fixture.detectChanges();
+    component.ngOnInit();
 
-  //   const tableRows = fixture.debugElement.queryAll(By.css('mat-row'));
-  //   expect(tableRows.length).toBe(1);
-  //   expect(tableRows[0].nativeElement.textContent).toContain('Gestion A');
-  // });
+    expect(component.dataSource.data).toEqual(mockProjects);
+  });
+
+  it('should apply filter correctly', () => {
+    const event = { target: { value: 'Approuvé' } } as Event;
+    component.applyFilter(event);
+
+    expect(component.dataSource.filter).toBe('Approuvé');
+  });
+
+  it('should search correctly', () => {
+    const value = 'GESTION A';
+    component.search(value);
+
+    expect(component.dataSource.filter).toBe('GESTION A');
+  });
+
+  it('should return displayed columns', () => {
+    const expectedColumns = ['nom', 'numeroProjet', 'statut'];
+    const result = component.getDisplayedColumns();
+
+    expect(result).toEqual(expectedColumns);
+  });
+
 });
+

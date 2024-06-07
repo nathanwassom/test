@@ -1,32 +1,32 @@
 [
   {
-        "id": 1,
-        "name": "GESTION A",
-        "projectNumber": "1234",
-        "status": "Approuvé"
-      },
-      {
-        "id": 2,
-        "name": "GESTION A",
-        "projectNumber": "1234",
-        "status": "Validation"
-      },
-      {
-        "id": 3,
-        "name": "GESTION A",
-        "projectNumber": "1234",
-        "status": "Refusé"
-      },
-      {
-        "id": 4 ,
-        "name": "GESTION A",
-        "projectNumber": "1234",
-        "status": "Inactif"
-      },
-      {
-        "id": 5,
-        "name": "GESTION A",
-        "projectNumber": "1234",
-        "status": "Création"
-      }
-      ]
+    "id": 1,
+    "name": "GESTION A",
+    "projectNumber": "1234",
+    "status": "Approuvé"
+  },
+  {
+    "id": 2,
+    "name": "GESTION A",
+    "projectNumber": "1234",
+    "status": "Validation"
+  },
+  {
+    "id": 3,
+    "name": "GESTION A",
+    "projectNumber": "1234",
+    "status": "Refusé"
+  },
+  {
+    "id": 4 ,
+    "name": "GESTION A",
+    "projectNumber": "1234",
+    "status": "Inactif"
+  },
+  {
+    "id": 5,
+    "name": "GESTION A",
+    "projectNumber": "1234",
+    "status": "Création"
+  }
+]
