@@ -9,10 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectModule } from './project/project.module';
+import { ComponentComponent } from './component/component.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ComponentComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { ProjectModule } from './project/project.module';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ProjectModule
+    ProjectModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideAnimationsAsync()

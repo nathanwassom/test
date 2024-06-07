@@ -1,37 +1,158 @@
-.project-list {
+mat-form-field {
+  border-radius: 10px;
+  background-color: #F2F2F2;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+mat-form-field mat-label {
+  margin-right: 10px;
+}
+
+mat-icon {
+  color: #2E865F;
+  margin-right: 10px;
+}
+.example-button-container{
+  background-color: #2E865F;
+  color: #FFFFFF;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  flex-grow: 1;
+}
+
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
   padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
 }
 
 mat-form-field {
-  width: 300px;
-}
-
-mat-table {
   width: 100%;
+  margin-bottom: 20px;
 }
 
-mat-header-cell, mat-cell {
+mat-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+mat-icon {
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
   text-align: left;
 }
 
-mat-header-cell {
+th {
+  background-color: #f0f0f0;
+}
+
+td {
+  border-top: none;
+}
+
+.mat-sort-header {
+  cursor: pointer;
+}
+
+.mat-sort-header-arrow {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.mat-paginator {
+  margin-top: 20px;
+}
+
+.mat-paginator-page-size {
+  font-size: 16px;
+}
+
+.mat-paginator-navigation {
+  font-size: 18px;
+}
+.statut {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Approuvé {
+  background-color: #C6F7D0; /* vert clair */
+  color: #2E865F; /* vert foncé */
+  padding: 5px 10px;
+  border-radius: 10px;
   font-weight: bold;
 }
 
-.status {
-  &.approuve {
-    color: green;
-  }
-  &.validation {
-    color: yellow;
-  }
-  &.refuse {
-    color: red;
-  }
-  &.inactif {
-    color: gray;
-  }
-  &.creation {
-    color: blue;
-  }
+.Validation {
+  background-color: #F7DC6F; /* jaune clair */
+  color: #666; /* gris foncé */
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.Refusé {
+  background-color: #FFC5C5; /* rouge clair */
+  color: #FF0000; /* rouge foncé */
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.Inactif {
+  border-style: solid;
+  color: #666; /* gris foncé */
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.Création {
+  background-color: #CCCCCC; /* gris clair */
+  color: #06becb; /* gris foncé */
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
 }

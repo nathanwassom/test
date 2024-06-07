@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProjectService } from '../../service/project.service';
 import { Project } from '../../models/project';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-project-list',
@@ -9,32 +10,44 @@ import { Project } from '../../models/project';
   styleUrls: ['./project-list.component.scss'],
 })
 export class ProjectListComponent implements OnInit {
-  projects!: MatTableDataSource<Project>;
+  // projects!: MatTableDataSource<Project>;
   searchQuery: string | undefined;
+  displayedColumns: string[] = ['nom', 'numeroProjet', 'statut'];
+
+  dataSource = new MatTableDataSource<Project>([]);
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
 
 
-  projets: (Project)[] = [];
-
-
+  }
 
   constructor(private _projectService: ProjectService) { }
 
   ngOnInit(): void {
-    
+
     this._projectService.getProjects().subscribe({
-      next: (p) => {
-        console.log(p);
-        this.projets = p;
+      next: (projects) => {
+        this.dataSource = new MatTableDataSource(projects);
+        this.dataSource.paginator = this.paginator;
+        console.log(projects);
 
       },
     });
   }
 
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.projects.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  search(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
+  getDisplayedColumns(): string[] {
+    return this.displayedColumns;
+  }
   getStatusClass(status:void){
     return '';
   }

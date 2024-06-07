@@ -21,12 +21,7 @@ import { MatSortModule } from '@angular/material/sort';
     CommonModule,
     ProjectRoutingModule,
     FormsModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatIconModule,
   ],
+  exports:[ProjectListComponent, ProjectItemComponent]
 })
 export class ProjectModule { }
